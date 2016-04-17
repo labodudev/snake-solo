@@ -1,0 +1,29 @@
+{
+  "name": "fortressjs-socketio-snake",
+  "version": "0.0.1",
+  "description": "A simple snake with FortressJS",
+  "main": "wf.js",
+  "scripts": {
+    "test": "node ./script/unit.script.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/labodudev/fortressjs-socketio-snake.git"
+  },
+  "keywords": [
+    "nodejs",
+    "js",
+    "framework",
+    "web",
+    "net",
+    "http",
+    "https",
+    "fast",
+    "secure",
+    "simple",
+    "speed"
+  ],
+  "author": "Jimmy Latour <jimmy.latour@gmail.com> (http://labodudev.fr)",
+  "license": "MIT",
+  "homepage": "https://github.com/labodudev/fortressjs-socketio-snake#readme"
+}
