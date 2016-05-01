@@ -14,4 +14,4 @@ var localConf=
 		"socketio-example": "FortressJS snake"
 	},
 }
-module.exports.localConf = localConf
+module.exports = localConf

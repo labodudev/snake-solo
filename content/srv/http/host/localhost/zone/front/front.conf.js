@@ -6,4 +6,4 @@ var frontConf =
 	'shared': 'jail',
 }
 
-module.exports.frontConf = frontConf;
+module.exports = frontConf;

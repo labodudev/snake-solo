@@ -4,4 +4,4 @@ var getConf=
 		"pos": 0,
 		"type": ["socketio"]
 	}
-module.exports.getConf = getConf
+module.exports = getConf

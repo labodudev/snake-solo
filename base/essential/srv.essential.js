@@ -1,3 +1,4 @@
+'use strict';
 /*
 
 Copyright (C) 2016  Adrien THIERRY
@@ -13,7 +14,7 @@ module.exports.AppServer = {};
 
 UTILS.LoopExec = LoopExec;
 
-'use strict';
+
 var wf = WF();
 
 function Srv()
@@ -28,7 +29,7 @@ function Srv()
 		      Open(s);
 		}
 		securify();
-	}
+	};
 
   function DoRun()
   {
@@ -40,26 +41,24 @@ function Srv()
 	  securify();
   }
 
-// TODO : METTRE CETTE FUNCTION DANS LES ENGINE
-
 var securify = function()
 {
-     if (wf.CONF['CHANGE_ID'] !== undefined && wf.CONF['CHANGE_ID'] == true && process.getuid && process.setuid)
+     if (wf.CONF.CHANGE_ID !== undefined && wf.CONF.CHANGE_ID === true && process.getuid && process.setuid)
     {
         try
         {
-                if(wf.CONF['GROUP_ID'] !== undefined)
-                    process.setgid(wf.CONF['GROUP_ID']);
-                if(wf.CONF['USER_ID'] !== undefined)
-                    process.setuid(wf.CONF['USER_ID']);
+                if(wf.CONF.GROUP_ID !== undefined)
+                    process.setgid(wf.CONF.GROUP_ID);
+                if(wf.CONF.USER_ID !== undefined)
+                    process.setuid(wf.CONF.USER_ID);
         }catch(e){
 
         }
     }
-}
+};
 var Open = function(srv)
 {
-    if(wf.SERVERS[srv].state !== undefined && (wf.SERVERS[srv].state == 1 || wf.SERVERS[srv].state == true))
+    if(wf.SERVERS[srv].state !== undefined && (wf.SERVERS[srv].state === 1 || wf.SERVERS[srv].state === true))
     {
         if(wf.AppServer[wf.SERVERS[srv].type])
         {
@@ -70,20 +69,18 @@ var Open = function(srv)
             wf.Log("Unknown server type");
         }
     }
-}
+};
 
   this.deleteAll = function()
   {
-
       for(var s in wf.SERVERS)
       {
         this.deleteSrv(s);
       }
-  }
+  };
 
   this.deleteSrv = function(id)
   {
-
     if(wf.SERVERS[id] !== undefined)
     {
       for(var c in wf.SERVERS[id].CLIENTS)
@@ -97,7 +94,7 @@ var Open = function(srv)
       }
       delete wf.SERVERS[id];
     }
-  }
+  };
 
   this.deleteClient = function(srv, client)
   {
@@ -107,30 +104,9 @@ var Open = function(srv)
       {
         wf.SERVERS[srv].CLIENTS[client].destroy();
       }
-      delete wf.SERVERS[srv].CLIENTS[client]
+      delete wf.SERVERS[srv].CLIENTS[client];
     }
-  }
-
-
-	function getSrvArray(p)
-	{
-		var sArr = [];
-		var end = wf.CONF['APP_END'];
-		var c = wf.CONF['APP_PATH'] + p;
-		if(fs.existsSync(c) && fs.lstatSync(c).isDirectory())
-		{
-			var dArr = fs.readdirSync(c);
-			dArr.forEach(function(d)
-			{
-				if (fs.lstatSync(c +'/' + d).isDirectory() && d != "." && d != "..")
-				{
-					var app = new App(c, d);
-					if(app.appState && app.conf.config['state']) { aArr.push(app); }
-				}
-			});
-		}
-		return aArr;
-	}
+  };
 }
 
 function LoopExec(req, res)
@@ -143,7 +119,7 @@ function LoopExec(req, res)
     if(req.continue)
     {
         wf.Launch(req, res);
-        req.loop++
+        req.loop++;
     }
     else break;
   }
@@ -155,40 +131,30 @@ function LoadServer(id)
 	if(id !== undefined) full = false;
     if(!wf.SERVERS)
 	   wf.SERVERS = { };
-	var sDir = wf.CONF['SRV_PATH'];
+	var sDir = wf.CONF.SRV_PATH;
 	if(fs.existsSync(sDir) && fs.lstatSync(sDir).isDirectory())
 	{
 		var hArr = fs.readdirSync(sDir);
 		hArr.forEach(function(d)
 		{
 
-      var conf = d + wf.CONF['CONFIG_END'];
+			var conf = d + wf.CONF.CONFIG_END;
 			if ( fs.existsSync(sDir + d + '/' + conf) && fs.lstatSync(sDir + d + '/' + conf).isFile() && d != "." && d != ".." &&
 				( full || d == id) )
 			{
-
-        try
-        {
-          var srvConf = require (sDir + d + '/' + conf);
-        
-          for(var prop in srvConf)
-          {
-            var tmpConf = srvConf[prop];
-
-            if(tmpConf.state == true)
-            {
-              wf.SERVERS[d] = tmpConf;
-              wf.SERVERS[d].id = d;
-			  wf.SERVERS[d].CLIENTS = [];
-            }
-            
-          }
-        }
-        catch(e)
-        {
-          console.log("[!] Error conf : " + sDir + d + '/' + conf);
-        }
-      }
+			  try
+			  {
+				var srvConf = require (sDir + d + '/' + conf);
+				wf.SERVERS[d] = srvConf;
+				wf.SERVERS[d].id = d;
+				wf.SERVERS[d].CLIENTS = {};
+				wf.SERVERS[d].HANDLES = {};
+			  }
+			  catch(e)
+			  {
+				  console.log("[!] Error Server conf : " + sDir + d + '/' + conf);
+			  }
+			}
 		});
 	}
 }

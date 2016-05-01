@@ -1,0 +1,27 @@
+[0501/161111:WARNING:ipc_channel_win.cc(360)] Unable to create pipe "\\.\pipe\chrome.3976.0.45741441" in client mode: Le fichier spécifié est introuvable. (0x2)
+[0501/162500:ERROR:gles2_cmd_decoder.cc(13099)] [.RenderWorker-0064D258]GL ERROR :GL_INVALID_VALUE : glCopySubTextureCHROMIUM: source texture has no level 0
+[0501/162500:ERROR:gles2_cmd_decoder.cc(13099)] [.RenderWorker-0064D258]GL ERROR :GL_INVALID_VALUE : glCopySubTextureCHROMIUM: source texture has no level 0
+[0501/162500:ERROR:gles2_cmd_decoder.cc(13099)] [.RenderWorker-0064D258]GL ERROR :GL_INVALID_VALUE : glCopySubTextureCHROMIUM: source texture has no level 0
+[0501/162500:ERROR:gles2_cmd_decoder.cc(13099)] [.RenderWorker-0064D258]GL ERROR :GL_INVALID_VALUE : glCopySubTextureCHROMIUM: source texture has no level 0
+[0501/162500:ERROR:gles2_cmd_decoder.cc(13099)] [.RenderWorker-0064D258]GL ERROR :GL_INVALID_VALUE : glCopySubTextureCHROMIUM: source texture has no level 0
+[0501/162500:ERROR:gles2_cmd_decoder.cc(13099)] [.RenderWorker-0064D258]GL ERROR :GL_INVALID_VALUE : glCopySubTextureCHROMIUM: source texture has no level 0
+[0501/162500:ERROR:gles2_cmd_decoder.cc(13099)] [.RenderWorker-0064D258]GL ERROR :GL_INVALID_VALUE : glCopySubTextureCHROMIUM: source texture has no level 0
+[0501/162500:ERROR:gles2_cmd_decoder.cc(13099)] [.RenderWorker-0064D258]GL ERROR :GL_INVALID_VALUE : glCopySubTextureCHROMIUM: source texture has no level 0
+[0501/162500:ERROR:gles2_cmd_decoder.cc(13099)] [.RenderWorker-0064D258]GL ERROR :GL_INVALID_VALUE : glCopySubTextureCHROMIUM: source texture has no level 0
+[0501/162500:ERROR:gles2_cmd_decoder.cc(13099)] [.RenderWorker-0064D258]GL ERROR :GL_INVALID_VALUE : glCopySubTextureCHROMIUM: source texture has no level 0
+[0501/162500:ERROR:gles2_cmd_decoder.cc(13099)] [.RenderWorker-0064D258]GL ERROR :GL_INVALID_VALUE : glCopySubTextureCHROMIUM: source texture has no level 0
+[0501/162500:ERROR:gles2_cmd_decoder.cc(13099)] [.RenderWorker-0064D258]GL ERROR :GL_INVALID_VALUE : glCopySubTextureCHROMIUM: source texture has no level 0
+[0501/162500:ERROR:gles2_cmd_decoder.cc(13099)] [.RenderWorker-0064D258]GL ERROR :GL_INVALID_VALUE : glCopySubTextureCHROMIUM: source texture has no level 0
+[0501/162500:ERROR:gles2_cmd_decoder.cc(13099)] [.RenderWorker-0064D258]GL ERROR :GL_INVALID_VALUE : glCopySubTextureCHROMIUM: source texture has no level 0
+[0501/162500:ERROR:gles2_cmd_decoder.cc(13099)] [.RenderWorker-0064D258]GL ERROR :GL_INVALID_VALUE : glCopySubTextureCHROMIUM: source texture has no level 0
+[0501/162500:ERROR:gles2_cmd_decoder.cc(13099)] [.RenderWorker-0064D258]GL ERROR :GL_INVALID_VALUE : glCopySubTextureCHROMIUM: source texture has no level 0
+[0501/165730:WARNING:raw_channel_win.cc(532)] WriteFile: Le canal de communication est sur le point d’être fermé. (0xE8)
+[0501/165810:ERROR:ipc_channel_win.cc(207)] pipe error: 109
+[0501/165834:ERROR:gles2_cmd_decoder.cc(13099)] [.RenderWorker-007D1E08]GL ERROR :GL_INVALID_VALUE : glCopySubTextureCHROMIUM: source texture has no level 0
+[0501/165834:ERROR:gles2_cmd_decoder.cc(13099)] [.RenderWorker-007D1E08]GL ERROR :GL_INVALID_VALUE : glCopySubTextureCHROMIUM: source texture has no level 0
+[0501/165834:ERROR:gles2_cmd_decoder.cc(13099)] [.RenderWorker-007D1E08]GL ERROR :GL_INVALID_VALUE : glCopySubTextureCHROMIUM: source texture has no level 0
+[0501/165834:ERROR:gles2_cmd_decoder.cc(13099)] [.RenderWorker-007D1E08]GL ERROR :GL_INVALID_VALUE : glCopySubTextureCHROMIUM: source texture has no level 0
+[0501/165834:ERROR:ipc_channel_win.cc(207)] pipe error: 109
+[0501/170022:ERROR:gles2_cmd_decoder.cc(13099)] [.RenderWorker-0101DB18]GL ERROR :GL_INVALID_VALUE : glCopySubTextureCHROMIUM: source texture has no level 0
+[0501/170022:ERROR:gles2_cmd_decoder.cc(13099)] [.RenderWorker-0101DB18]GL ERROR :GL_INVALID_VALUE : glCopySubTextureCHROMIUM: source texture has no level 0
+[0501/170100:ERROR:ipc_channel_win.cc(207)] pipe error: 109

@@ -11,6 +11,12 @@ var singleton = function singleton()
 		  delete this[i];
 		}
   }
+};
+
+function getErrorStack(err, stack)
+{
+	if(err) wf.Log(err);
+	return stack; 
 }
 
 // GET SINGLETON CALLER
@@ -22,7 +28,7 @@ function getCaller()
     var callerfile;
     var currentfile;
 
-    Error.prepareStackTrace = function (err, stack) { return stack; };
+    Error.prepareStackTrace = getErrorStack;
 
     currentfile = err.stack.shift().getFileName();
 
@@ -40,15 +46,19 @@ function getCaller()
 var getInstance = function()
 {
     var caller = getCaller();
-    if(caller !== undefined && single !== undefined && caller.indexOf(single.CONF['HOST_FOLDER']) > -1)
+    if(caller !== undefined && single !== undefined && caller.indexOf(single.CONF.HOST_FOLDER) > -1)
     {
-      var srv = caller.split(single.CONF['SRV_FOLDER'])[1].split('/')[0];
-      var host = caller.split(single.CONF['HOST_FOLDER'])[1].split('/')[0];
-      var result = 
-      {
-          HOST: single.SERVERS[srv].HOSTS[host],
-      };
-        return result;
+      var srv = caller.split(single.CONF.SRV_FOLDER)[1].split('/')[0];
+      var host = caller.split(single.CONF.HOST_FOLDER)[1].split('/')[0];
+	  var result = {};
+	  if(single.SERVERS[srv])
+	  {
+		result = 
+		{
+			HOST: single.SERVERS[srv].HOSTS[host],
+		};
+	  }
+	  return result;
     }
 
     else if(single === undefined)
@@ -56,6 +66,6 @@ var getInstance = function()
         single = new singleton();
     }
     return single;
-}
+};
 
 module.exports = getInstance;

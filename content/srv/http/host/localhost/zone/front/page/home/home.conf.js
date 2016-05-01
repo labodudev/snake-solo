@@ -4,4 +4,4 @@ var homeConf=
     	"uri": "home"
 
 	}
-module.exports.homeConf = homeConf
+module.exports = homeConf

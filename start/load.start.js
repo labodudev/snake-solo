@@ -6,45 +6,45 @@ var nv = getNodeVersion();
 
 // REQUIRE STD Object
 
-GLOBAL.cluster = require('cluster');
-GLOBAL.os = require('os');
-GLOBAL.child_process = require('child_process')
-GLOBAL.exec = child_process.exec;
-GLOBAL.spawn = child_process.spawn;
-GLOBAL.execFile = child_process.execFile;
-GLOBAL.fs = require('fs');
-GLOBAL.http = require('http');
-GLOBAL.https = require('https');
-if( nv.major == 0 || (nv.major == 1 && nv.minor < 12) ){GLOBAL.http.setMaxHeaderLength(10000000);} // SET HTTP MAXHEADER
-GLOBAL.http.globalAgent.maxSockets = Infinity;
-GLOBAL.path = require('path');
-GLOBAL.net = require('net');
-GLOBAL.url  = require('url');
-GLOBAL.querystring = require('querystring');
-GLOBAL.zlib  = require('zlib');
-GLOBAL.crypto = require('crypto');
+global.cluster = require('cluster');
+global.os = require('os');
+global.child_process = require('child_process');
+global.exec = child_process.exec;
+global.spawn = child_process.spawn;
+global.execFile = child_process.execFile;
+global.fs = require('fs');
+global.http = require('http');
+global.https = require('https');
+if( nv.major === 0 || (nv.major === 1 && nv.minor < 12) ){global.http.setMaxHeaderLength(10000000);} // SET HTTP MAXHEADER
+global.http.globalAgent.maxSockets = Infinity;
+global.path = require('path');
+global.net = require('net');
+global.url  = require('url');
+global.querystring = require('querystring');
+global.zlib  = require('zlib');
+global.crypto = require('crypto');
 
-GLOBAL.cluster = require('cluster');
-GLOBAL.extend = require('util')._extend;
-GLOBAL.events = require('events');
-GLOBAL.stream = require("stream");
+global.cluster = require('cluster');
+global.extend = require('util')._extend;
+global.events = require('events');
+global.stream = require("stream");
 wf.eventEmitter = new events.EventEmitter();
-GLOBAL.EOL = os.EOL;
+global.EOL = os.EOL;
 
 // CREATE UTILS OBJECT
-GLOBAL.UTILS = {};
+global.UTILS = {};
 
 wf.Default = function(arg, def)
 {
 	if(arg === undefined) return def;
 	else return arg;
-}
+};
 UTILS.Default = wf.Default;
 
 wf.DefaultStr = function(arg)
 {
 	return wf.Default(arg, "");
-}
+};
 UTILS.DefaultStr = wf.DefaultStr;
 
 wf.Redirect = function(res, url)
@@ -55,23 +55,48 @@ wf.Redirect = function(res, url)
 		});
 	res.stop = true;
 	res.end("");
-}
+};
 UTILS.Redirect = wf.Redirect;
 
 wf.Clone = function(obj)
 {
   return Object.create(obj);
-}
+};
 UTILS.Clone = wf.Clone;
 
-wf.Load = new function(){
+UTILS.checkState = function(state)
+{
+	if(state == "true") this.config.state = true;
+	else this.config.state = false;
+};
+UTILS.checkPos = function(pos)
+{
+	if(!isNan(this.config.pos)) this.config.pos = parseInt(pos);
+};
 
+UTILS.defaultConf = function(config, more)
+{
+	if(!config) config = {};
+	if(config.state === undefined) config.state = true;
+	if(!config.pos) config.pos = 100;
+	if(more)
+	{
+		for(var m in more)
+		{
+			if(!config[m]){config[m] = more[m];}
+		}
+	}
+};
+
+wf.Load = new wfLoader();
+function wfLoader()
+{
 	/* PUBLIC */
 	this.Base = function(path, cpath)
 	{
 		var bpath = "";
 		if(cpath === undefined)
-			bpath = wf.CONF['BASE_PATH'] + path + "/";
+			bpath = wf.CONF.BASE_PATH + path + "/";
 		else bpath = cpath + path + "/";
 		var files = this.loadFiles(path, bpath);
 		if(files !== undefined)
@@ -85,7 +110,7 @@ wf.Load = new function(){
 				}
 			});
 		}
-	}
+	};
 
 	this.loadFiles = function(path, bpath, complete)
 	{
@@ -107,15 +132,17 @@ wf.Load = new function(){
 					return fs.statSync(bpath + file).isFile();
 			});
 		}
-	}
+	};
     
     /* PRIVATE */
-	function getDirectories() {
-	  return fs.readdirSync(wf.CONF['BASE_PATH'] + path).filter(function (file) {
-		return fs.statSync(wf.CONF['BASE_PATH'] + path + '/' + file).isDirectory();
+	function getDirectories() 
+	{
+	  return fs.readdirSync(wf.CONF.BASE_PATH + path).filter(function (file) 
+	  {
+		return fs.statSync(wf.CONF.BASE_PATH + path + '/' + file).isDirectory();
 	  });
 	}
-};
+}
 
 function getNodeVersion()
 {
@@ -126,6 +153,6 @@ function getNodeVersion()
 		major: v[0],
 		minor: v[1],
 		rev: v[2],
-	}
+	};
 	return res;
 }

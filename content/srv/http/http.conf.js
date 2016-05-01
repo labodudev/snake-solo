@@ -3,7 +3,7 @@ var sioConf=
 		"state": true,
 		"type": "http",
 		"name": "webserver",
-		"port": {"http": 3000 },
+		"port": {"http": 33000 },
 		"thread": 1,//os.cpus().length,
 		"engine":
 		{
@@ -17,4 +17,4 @@ var sioConf=
 		},
 		"map": ["start", "app", "default", "route", "error" ], // Order app/engine launching map
 	}
-module.exports.sioConf = sioConf
+module.exports = sioConf

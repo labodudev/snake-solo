@@ -19,7 +19,7 @@ var rmdir = function(dir, cb2)
         {
             var i = 0;
             var j = list.length;
-            var cb = function(){ fs.rmdir(dir, function(err){if(cb2 && typeof cb2 == "function") cb2(err);})}
+            var cb = function(){ fs.rmdir(dir, function(err){if(cb2 && typeof cb2 == "function") cb2(err);});};
             recRm(dir, i, j, list, cb);
             return;
         }
@@ -33,7 +33,7 @@ var rmdir = function(dir, cb2)
             i++;
             if(i < j)
             {
-                recRm(from, i, j, list, cb)
+                recRm(from, i, j, list, cb);
             }
             else
             {
@@ -41,9 +41,12 @@ var rmdir = function(dir, cb2)
                     cb();
             }
         }
-        try{
-        var filename = path.join(from, list[i]);
-        }catch(e)
+		var filename = "";
+        try
+		{
+			filename = path.join(from, list[i]);
+        }
+		catch(e)
         {
             nextFile();
             return;
@@ -58,10 +61,7 @@ var rmdir = function(dir, cb2)
             {   
                 if(filename)
                 {
-                    rmdir(filename, function()
-                    {
-                        nextFile();
-                    });
+                    rmdir(filename, nextFile);
                 }
                 else
                 {
@@ -70,15 +70,11 @@ var rmdir = function(dir, cb2)
             } 
             else 
             {
-                fs.unlink(filename, function(err)
-                {
-                    nextFile();
-                });
+                fs.unlink(filename, nextFile);
             }
         });
     }    
 };
 
 fileUtil.rmdir = rmdir;
-
 module.exports.fileUtil = fileUtil;
