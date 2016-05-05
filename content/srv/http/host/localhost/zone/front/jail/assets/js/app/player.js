@@ -39,10 +39,9 @@ define(["app/config", "app/utils"], function (config, utils) {
       display.g.lineWidth = 2;
       display.g.strokeStyle = '#003300';
       display.g.fillStyle = '#40d47e';
-      display.drawCircle(headX, headY, config.radius, 20);
-      display.g.stroke();
+      display.render.drawCircle(headX, headY, config.radius, 20, '#40d47e');
 
-      display.g.fillStyle = '#e74c3c';
+
       this.numberVisibleSegments = 0;
       for (var i = 0; i < this.ls.length; i++) {
         x = this.lp[this.ls[i]].x - start.x;
@@ -55,8 +54,7 @@ define(["app/config", "app/utils"], function (config, utils) {
           y > headY - config.screenHeight/2 - 20 &&
           y < headY + config.screenHeight/2 + 20) {
           this.numberVisibleSegments++;
-          display.drawCircle(x, y, config.radius, 20);
-          display.g.stroke();
+          display.render.drawCircle(x, y, config.radius, 20, '#e74c3c');
         }
       }
     },

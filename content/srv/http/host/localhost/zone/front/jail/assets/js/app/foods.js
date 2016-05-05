@@ -20,10 +20,6 @@ define(["app/config", "app/utils", "app/player"], function (config, utils, playe
     },
 
     drawFoods: function(display) {
-      display.g.strokeStyle = '#003300';
-      display.g.fillStyle = '#e67e22';
-      display.g.lineWidth = 2;
-
       this.numberVisibleFoods = 0;
       for (var key in this.foods) {
         if(this.foods[key].x > player.x - config.screenWidth/2 - 20 &&
@@ -31,8 +27,7 @@ define(["app/config", "app/utils", "app/player"], function (config, utils, playe
           this.foods[key].y > player.y - config.screenHeight/2 - 20 &&
           this.foods[key].y < player.y + config.screenHeight/2 + 20) {
           this.numberVisibleFoods++;
-          display.drawCircle(this.foods[key].x - player.x + config.screenWidth / 2, this.foods[key].y -  player.y + config.screenHeight / 2, config.radiusFood, 10);
-          display.g.stroke();
+          display.render.drawCircle(this.foods[key].x - player.x + config.screenWidth / 2, this.foods[key].y -  player.y + config.screenHeight / 2, config.radiusFood, 10, '#e67e22');
         }
       }
     },

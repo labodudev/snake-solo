@@ -18,8 +18,10 @@ define(["app/config", "app/display", "app/logic"], function (config, display, lo
       }
 
       for (var key in this.btnLeaves) {
-        this.btnLeaves[key].onclick = function() {
-          window.close();
+          if (this.btnLeaves[key]) {
+            this.btnLeaves[key].onclick = function() {
+            window.close();
+          }
         }
       }
     },

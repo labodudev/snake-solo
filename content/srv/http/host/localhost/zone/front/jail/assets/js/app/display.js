@@ -5,17 +5,20 @@ http://labodudev.fr
 
 "use strict"
 
-define(['app/config', 'app/player', 'app/foods', 'app/utils', 'app/debug'], function (config, player, foods, utils, debug) {
+define(['app/config', 'app/player', 'app/foods', 'app/utils', 'app/debug', 'app/render2d', 'app/renderWebGL'], function (config, player, foods, utils, debug, render2d, renderWebGL) {
   function display() {}
 
   display.prototype = {
     context: "2d",
+    render: undefined,
 
     getDisplay: function() {
       this.c = document.getElementById("csv");
       this.c.width = config.screenWidth;
       this.c.height = config.screenHeight;
-      this.g = this.c.getContext("2d");
+      this.g = this.c.getContext("experimental-webgl");
+      this.render = renderWebGL;
+      renderWebGL.setContext(this.g);
     },
 
     animationFrameLoop: function () {
@@ -26,11 +29,9 @@ define(['app/config', 'app/player', 'app/foods', 'app/utils', 'app/debug'], func
     },
 
     renderLoop: function () {
-      this.g.fillStyle = "#f2fbff";
-      this.g.fillRect(0, 0, config.screenWidth, config.screenHeight);
-
-      this.drawGrid();
-      this.drawBorder();
+      this.render.cleanScreen();
+      this.render.drawGrid();
+      this.render.drawBorder();
       foods.drawFoods(this);
       player.drawPlayer(this);
       debug.draw(this);

@@ -25,3 +25,10 @@
 [0501/170022:ERROR:gles2_cmd_decoder.cc(13099)] [.RenderWorker-0101DB18]GL ERROR :GL_INVALID_VALUE : glCopySubTextureCHROMIUM: source texture has no level 0
 [0501/170022:ERROR:gles2_cmd_decoder.cc(13099)] [.RenderWorker-0101DB18]GL ERROR :GL_INVALID_VALUE : glCopySubTextureCHROMIUM: source texture has no level 0
 [0501/170100:ERROR:ipc_channel_win.cc(207)] pipe error: 109
+[0502/122833:ERROR:gles2_cmd_decoder.cc(13099)] [.RenderWorker-00757568]GL ERROR :GL_INVALID_VALUE : glCopySubTextureCHROMIUM: source texture has no level 0
+[0502/122833:ERROR:gles2_cmd_decoder.cc(13099)] [.RenderWorker-00757568]GL ERROR :GL_INVALID_VALUE : glCopySubTextureCHROMIUM: source texture has no level 0
+[0502/122833:ERROR:gles2_cmd_decoder.cc(13099)] [.RenderWorker-00757568]GL ERROR :GL_INVALID_VALUE : glCopySubTextureCHROMIUM: source texture has no level 0
+[0502/122833:ERROR:gles2_cmd_decoder.cc(13099)] [.RenderWorker-00757568]GL ERROR :GL_INVALID_VALUE : glCopySubTextureCHROMIUM: source texture has no level 0
+[0502/122833:ERROR:gles2_cmd_decoder.cc(13099)] [.RenderWorker-00757568]GL ERROR :GL_INVALID_VALUE : glCopySubTextureCHROMIUM: source texture has no level 0
+[0502/123010:ERROR:ipc_channel_win.cc(502)] pipe error: 232
+[0505/165259:ERROR:ipc_channel_win.cc(207)] pipe error: 109
