@@ -94,9 +94,9 @@ define(["app/config", "app/player"], function (config, player) {
     },
 
     drawText: function (text, x, y) {
-      display.g.font = "15px Arial";
-      display.g.fillStyle = 'black';
-      display.render.fillText("Visible foods: " + foods.numberVisibleFoods, 10, 40);
+      this.c.font = "15px Arial";
+      this.c.fillStyle = 'black';
+      this.c.fillText(text, x, y);
     }
   };
 

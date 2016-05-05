@@ -16,9 +16,9 @@ define(['app/config', 'app/player', 'app/foods', 'app/utils', 'app/debug', 'app/
       this.c = document.getElementById("csv");
       this.c.width = config.screenWidth;
       this.c.height = config.screenHeight;
-      this.g = this.c.getContext("experimental-webgl");
-      this.render = renderWebGL;
-      renderWebGL.setContext(this.g);
+      this.g = this.c.getContext("2d");
+      this.render = render2d;
+      render2d.setContext(this.g);
     },
 
     animationFrameLoop: function () {
